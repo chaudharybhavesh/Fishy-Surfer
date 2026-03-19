@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fishy Surfer: Ocean Vibes - Play Free Online</title>
+    
+    <meta name="google-adsense-account" content="ca-pub-8579991065889889">
+    
     <style>
         :root {
             --primary: #4fc3f7;
@@ -150,11 +153,11 @@
            SMART FULLSCREEN MODE WHEN GAME IS PLAYING
            ========================================= */
         body.playing {
-            position: fixed; /* Locks the body to prevent scrolling on mobile */
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100dvh; /* Uses dynamic viewport height */
+            height: 100dvh; 
             overflow: hidden;
             touch-action: none;
         }
@@ -165,26 +168,9 @@
             display: none !important;
         }
 
-        body.playing .page-section {
-            height: 100%;
-        }
-
-        body.playing .game-section {
-            padding: 0;
-            margin: 0;
-            background: #000;
-            height: 100%;
-            width: 100%;
-        }
-
-        body.playing .game-container {
-            max-width: 100%;
-            width: 100%;
-            height: 100%;
-            max-height: none;
-            border: none;
-            border-radius: 0;
-        }
+        body.playing .page-section { height: 100%; }
+        body.playing .game-section { padding: 0; margin: 0; background: #000; height: 100%; width: 100%; }
+        body.playing .game-container { max-width: 100%; width: 100%; height: 100%; max-height: none; border: none; border-radius: 0; }
 
         /* =========================================
            ORIGINAL GAME STYLES
@@ -208,21 +194,22 @@
         .action-btn.disabled { opacity: 0.3; pointer-events: none; background: #555; border-color: #888; animation: none; }
         .screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 50; pointer-events: auto; }
         .hidden { display: none !important; }
-        .btn { background: linear-gradient(to right, #ff9966, #ff5e62); border: none; padding: 15px 40px; border-radius: 50px; color: white; font-size: 1.5rem; margin-top: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 94, 98, 0.4); transition: transform 0.1s; min-width: 200px; font-weight: 700; }
+        /* TWEAKED FOR ADS: Adjusted padding and margins to fit the 300x250 ad nicely */
+        .btn { background: linear-gradient(to right, #ff9966, #ff5e62); border: none; padding: 12px 30px; border-radius: 50px; color: white; font-size: 1.2rem; margin-top: 5px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 94, 98, 0.4); transition: transform 0.1s; min-width: 150px; font-weight: 700; }
         .btn:active { transform: scale(0.95); }
         .btn-secondary { background: linear-gradient(to right, #4facfe, #00f2fe); box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4); }
         .btn-home { background: linear-gradient(to right, #667eea, #764ba2); box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4); }
-        .screen h1 { color: white; font-size: 3rem; margin-bottom: 10px; text-shadow: 0 0 20px #4facfe; text-align: center; }
-        .screen p { color: #eee; margin-bottom: 20px; font-size: 1.2rem; text-align: center; max-width: 80%; }
-        .shop-container { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; width: 90%; max-width: 400px; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(255,255,255,0.1); }
-        .shop-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; color: var(--coin-color); font-weight: bold; font-size: 1.2rem; }
-        .skin-viewer { width: 100%; height: 120px; display: flex; align-items: center; justify-content: space-between; }
-        .arrow-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
+        .screen h1 { color: white; font-size: 2.2rem; margin-bottom: 5px; text-shadow: 0 0 20px #4facfe; text-align: center; }
+        .screen p { color: #eee; margin-bottom: 10px; font-size: 1.1rem; text-align: center; max-width: 80%; }
+        .shop-container { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 12px; width: 90%; max-width: 400px; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 5px;}
+        .shop-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--coin-color); font-weight: bold; font-size: 1.1rem; }
+        .skin-viewer { width: 100%; height: 90px; display: flex; align-items: center; justify-content: space-between; }
+        .arrow-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
         .arrow-btn:active { background: rgba(255,255,255,0.4); transform: scale(0.9); }
         .skin-info { text-align: center; color: white; }
-        .skin-name { font-size: 1.5rem; font-weight: bold; margin-bottom: 5px; }
-        .skin-cost { font-size: 1rem; color: #aaa; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .shop-btn { padding: 12px 30px; border-radius: 20px; border: none; font-weight: bold; font-size: 1rem; margin-top: 15px; cursor: pointer; width: 100%; transition: transform 0.1s; }
+        .skin-name { font-size: 1.3rem; font-weight: bold; margin-bottom: 2px; }
+        .skin-cost { font-size: 0.9rem; color: #aaa; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .shop-btn { padding: 8px 25px; border-radius: 15px; border: none; font-weight: bold; font-size: 0.9rem; margin-top: 5px; cursor: pointer; width: 100%; transition: transform 0.1s; }
         .shop-btn:active { transform: scale(0.95); }
         .btn-buy { background: var(--accent); color: black; }
         .btn-equip { background: var(--success); color: black; }
@@ -231,62 +218,47 @@
         @keyframes chompScale { 0% { transform: scale(0) rotate(-15deg); opacity: 0; } 50% { transform: scale(1.5) rotate(-5deg); opacity: 1; } 70% { transform: scale(0.9) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); } }
         @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         #gameOverScreen, #pauseScreen { background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%); backdrop-filter: blur(5px); }
-        .chomp-text { color: #ff5252; font-size: 5rem; font-weight: 900; letter-spacing: 2px; text-shadow: 3px 3px 0px #8b0000, 0 0 30px red; margin-bottom: 10px; animation: chompScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        .results-container { display: flex; flex-direction: column; align-items: center; opacity: 0; animation: slideUpFade 0.8s ease-out forwards 0.5s; }
-        .resource-tally { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0; font-size: 1.5rem; font-weight: bold; color: var(--coin-color); background: rgba(255,255,255,0.1); padding: 10px 30px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.3); }
+        .chomp-text { color: #ff5252; font-size: 4rem; font-weight: 900; letter-spacing: 2px; text-shadow: 3px 3px 0px #8b0000, 0 0 30px red; margin-bottom: 5px; animation: chompScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .results-container { display: flex; flex-direction: column; align-items: center; opacity: 0; animation: slideUpFade 0.8s ease-out forwards 0.5s; width: 100%; }
+        .resource-tally { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 5px 0 10px 0; font-size: 1.3rem; font-weight: bold; color: var(--coin-color); background: rgba(255,255,255,0.1); padding: 8px 25px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.3); }
         .vignette-heavy { background: radial-gradient(circle, transparent 40%, #000 100%) !important; transition: background 0.5s ease; }
         @keyframes chompFlash { 0% { background: transparent; } 50% { background: rgba(255, 0, 0, 0.6); } 100% { background: black; } }
         .chomp-effect { animation: chompFlash 0.5s forwards; }
+
+        /* Ad Container CSS */
+        .adsterra-box {
+            width: 300px;
+            height: 250px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px auto;
+            pointer-events: auto; /* Ensure clicks register on ad */
+        }
+        .btn-row { display: flex; gap: 10px; margin-top: 10px; }
 
         /* =========================================
            MOBILE RESPONSIVENESS (UPDATED)
            ========================================= */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 10px;
-            }
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-            nav a {
-                margin: 0 5px;
-                font-size: 0.9rem;
-            }
-            .content-section {
-                padding: 20px 15px;
-            }
-            .content-section h1 { font-size: 2rem; }
-            .content-section h2 { font-size: 1.5rem; }
-            .game-container {
-                min-height: 60vh;
-                height: 60vh;
-            }
+            header { flex-direction: column; gap: 15px; padding: 15px 10px; }
+            nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            nav a { margin: 0 5px; font-size: 0.9rem; }
+            .content-section { padding: 20px 15px; }
+            .game-container { min-height: 60vh; height: 60vh; }
             .hud { padding: 10px; }
             .hud-item { padding: 6px 12px; }
             .hud-value { font-size: 1rem; }
             .icon-btn { width: 40px; height: 40px; }
             .action-btn { width: 65px; height: 65px; font-size: 0.85rem; }
             #mobileControls { bottom: 30px; right: 20px; }
-            .screen h1 { font-size: 2.2rem; }
-            .shop-container { width: 95%; padding: 15px; }
             .contact-box { padding: 20px; margin: 20px auto; }
-            .email-link { font-size: 1rem; }
-            .chomp-text { font-size: 3.5rem; }
-        }
-
-        @media (max-width: 480px) {
-            .hud-left { flex-direction: column; gap: 8px; }
-            #warning { font-size: 1.2rem; bottom: 100px; }
-            .swipe-hint { bottom: 130px; font-size: 0.9rem; }
-            .footer-links { display: flex; flex-direction: column; gap: 10px; }
-            .footer-links a { margin: 0; }
         }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8579991065889889" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -334,7 +306,8 @@
                         <div id="mobileControls"><div class="action-btn" id="dashBtn">DASH</div></div>
 
                         <div id="startScreen" class="screen">
-                            <div style="margin-bottom: 20px;"><h1 style="font-size: 2.5rem; margin-bottom: 5px;">FISHY SURFER</h1></div>
+                            <h1 style="margin-top: 10px;">FISHY SURFER</h1>
+                            
                             <div class="shop-container">
                                 <div class="shop-header"><div class="coin-icon"></div><span id="shopBalance">0</span></div>
                                 <div class="skin-viewer">
@@ -342,12 +315,26 @@
                                     <div class="skin-info">
                                         <div class="skin-name" id="skinName">Clownfish</div>
                                         <div class="skin-cost" id="skinCost">Free</div>
-                                        <canvas id="skinPreview" width="80" height="60" style="margin-top:10px"></canvas>
+                                        <canvas id="skinPreview" width="80" height="60" style="margin-top:2px"></canvas>
                                     </div>
                                     <button class="arrow-btn" id="nextSkin">❯</button>
                                 </div>
                                 <button class="shop-btn btn-equipped" id="skinActionBtn">Equipped</button>
                             </div>
+
+                            <div class="adsterra-box">
+                                <script>
+                                  atOptions = {
+                                    'key' : 'aa604abdf3974d3d3a4b5f16639b1c4c',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                  };
+                                </script>
+                                <script src="https://www.highperformanceformat.com/aa604abdf3974d3d3a4b5f16639b1c4c/invoke.js"></script>
+                            </div>
+
                             <button class="btn" id="startBtn">SWIM</button>
                         </div>
 
@@ -363,8 +350,24 @@
                             <div class="results-container">
                                 <p>You reached <span id="finalScore" style="color: #ffeb3b; font-weight: bold;">0</span>m</p>
                                 <div class="resource-tally"><div class="coin-icon"></div> +<span id="finalCoinsEarned">0</span></div>
-                                <button class="btn" id="restartBtn">TRY AGAIN</button>
-                                <button class="btn btn-home" id="goHomeBtn">HOME</button>
+                                
+                                <div class="adsterra-box">
+                                    <script>
+                                      atOptions = {
+                                        'key' : 'aa604abdf3974d3d3a4b5f16639b1c4c',
+                                        'format' : 'iframe',
+                                        'height' : 250,
+                                        'width' : 300,
+                                        'params' : {}
+                                      };
+                                    </script>
+                                    <script src="https://www.highperformanceformat.com/aa604abdf3974d3d3a4b5f16639b1c4c/invoke.js"></script>
+                                </div>
+
+                                <div class="btn-row">
+                                    <button class="btn" id="restartBtn">TRY AGAIN</button>
+                                    <button class="btn btn-home" id="goHomeBtn" style="min-width: 100px;">HOME</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -373,6 +376,19 @@
         </section>
 
         <main class="content-section">
+            <div style="text-align: center; margin: 10px auto 30px auto; width: 300px; height: 250px;">
+                <script>
+                  atOptions = {
+                    'key' : 'aa604abdf3974d3d3a4b5f16639b1c4c',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/aa604abdf3974d3d3a4b5f16639b1c4c/invoke.js"></script>
+            </div>
+
             <h2>About Fishy Surfer Game</h2>
             <p>Welcome to Fishy Surfer, an endless ocean survival game where you play as a fast-swimming fish trying to navigate the dangerous depths of the sea. Collect golden coins, unlock amazing skins, and most importantly—survive the predator lurking below!</p>
             <h2>How to Play</h2>
@@ -638,4 +654,4 @@
         resize();
     </script>
 </body>
-</html>
+    </html>
